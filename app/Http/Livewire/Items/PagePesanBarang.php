@@ -85,12 +85,12 @@ class PagePesanBarang extends Component
     {
         $query = Transaksi::max('kode_transaksi');
         if (empty($query)) {
-            $this->kode_transaksi = 'KT01';
+            $this->kode_transaksi = 'KT1';
         }  else {
             $exp =  explode("T", $query);
             $str = 'KT';
-            $this->kode_transaksi = substr($query,2);
-            // sprintf("%s0%u", $str, abs($exp[1] + 1));
+            // $this->kode_transaksi = substr($query,2);
+           $this->kode_transaksi= sprintf("%s0%u", $str, abs($exp[1] + 1));
         }
         // dd([$this->kode_transaksi, $query++]);
         return $this->kode_transaksi;
@@ -159,6 +159,7 @@ class PagePesanBarang extends Component
                 'sub_total' => intval($this->harga) * intval($this->jumlah),
                 'tgl_masuk' => $this->tgl,
                 'transaksi_id' => $tr->id,
+                'status'=> 'Belum Selesai'
             ];
             BarangMasuk::create($data);
         }

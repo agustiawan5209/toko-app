@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Master;
 
+use App\Models\BarangMasuk;
 use App\Models\Persediaan;
 use App\Models\pesan;
 use Carbon\Carbon;
@@ -67,7 +68,7 @@ class Dashboard extends Component
         // Tampilkan stock Bahan Baku
         $stock = Stock::all();
         // Pesan
-        $pesan = pesan::where('status', 'Belum Selesai')->count();
+        $pesan = BarangMasuk::where('status', 'Belum Selesai')->count();
         $label = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
         // Cek Persediaan Barang
