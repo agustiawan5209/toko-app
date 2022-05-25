@@ -1,0 +1,26 @@
+<div class="rounded-md shadow-sm -space-y-px">
+                                <div class="grid gap-6">
+                                    <div class="col-span-12">
+                                        <label for="first_name" class="block text-sm font-medium text-gray-700">No Pesan</label>
+                                        <input type="text" wire:model="no_pesan" name="no_pesan" id="no_pesan"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required auto-complete="current-no_pesan">
+                                        @error('no_pesan') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    </div>
+
+                                    <div class="col-span-12">
+                                        <label for="email_address" class="block text-sm font-medium text-gray-700">Bahan</label>
+                                        <input type="text" name="bahan" wire:model='bahan' id="bahan" required autocomplete="current-Bahan" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        @error('bahan') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    </div>
+                                    <div class="col-span-12">
+                                        <label for="email_address" class="block text-sm font-medium text-gray-700">Harga</label>
+                                        <input type="number" min="0" wire:model='harga' minlength="2" name="Harga" id="Harga" required autocomplete="current-harga" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        @error('harga') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    </div>
+                                    <div class="col-span-12">
+                                        <label for="email_address" class="block text-sm font-medium text-gray-700">Tanggal Pemesanan</label>
+                                        <input type="date" wire:model="tgl_pemesanan" name="tgl_pemesanan" id="tgl_pemesanan" required autocomplete="current-tgl_pemesanan" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        @error('tgl_pesan') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    </div>
+
+                                </div>
+                            </div>

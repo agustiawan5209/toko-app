@@ -1,0 +1,58 @@
+ public $insertData;
+    public $userSaved;
+    public function mount()
+    {
+        $this->insertData = false;
+        $this->userSaved = false;
+    }
+    public function Insert()
+    {
+        $this->insertData = true;
+    }
+    public function Cancel()
+    {
+        $this->userSaved = true;
+        $this->insertData = false;
+    }
+
+    "Blade
+    <div class="p-4">
+                <x-jet-confirmation-modal wire:model="insertData">
+                    <form action="Post" action="#">
+                        @csrf
+                    <x-slot name="title">
+                        Tambah Produk
+                    </x-slot>
+
+                    <x-slot name="content">
+                            <div class="flex w-full justify-around" >
+                                <x-jet-label for="no_pesan" value="{{ __('no_pesan') }}" />
+                                <x-jet-input id="no_pesan" class="block mt-1 w-full" type="text" name="no_pesan"
+                                    required autocomplete="current-pesan" />
+                            </div>
+                        </x-slot>
+
+                    <x-slot name="footer">
+                        <x-jet-secondary-button wire:click="$toggle('insertData')" wire:loading.attr="disabled">
+                            Cancel
+                        </x-jet-secondary-button>
+
+                        <x-jet-button class="ml-2 bg-indigo-400" wire:click="Cancel" wire:loading.attr="disabled">
+                            Simpan
+                        </x-jet-button>
+                    </x-slot>
+                </form>
+                </x-jet-confirmation-modal>
+
+
+                <x-jet-button wire:click="Insert">
+                    {{ __('Tambah Data') }}
+                </x-jet-button>
+
+                <span x-data="{ userSaved: @entangle('userSaved') }">
+                    <x-jet-action-message class="mr-3 text-red-600" on="saved" x-show='userSaved'>
+                        {{ __('Password saved, please refresh.') }}
+                    </x-jet-action-message>
+                </span>
+
+            </div>

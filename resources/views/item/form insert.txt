@@ -1,0 +1,18 @@
+$date = date('Y-m-d H:i:s');
+
+        $this->validate([
+            'no_pesan'=> 'required',
+            'bahan'=> 'required',
+            'harga'=> 'required',
+            'tgl_pemesanan'=> 'required||date'
+        ]);
+        $data = [
+            'no_pesan'=> $this->no_pesan,
+            'bahan'=> $this->bahan,
+            'harga'=> $this->harga,
+            'tgl_pemesanan'=> $this->tgl_pemesanan,
+            'created_at'=> $date
+        ];
+        pesan::insert($data);
+
+        session()->flash("Pesan", $this->no_pesan ? "Berhasil Ditambah" : "Gagal Ditambah" );
